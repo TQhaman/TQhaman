@@ -165,7 +165,7 @@
   right: calc(var(--pixel) * 6);
   width: calc(var(--pixel) * 2);
   height: calc(var(--pixel) * 2);
-  background: var(--green);
+  background: var(--avatar-accent, var(--green));
 }
 
 .base {

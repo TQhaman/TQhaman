@@ -1,3 +1,5 @@
+import RoadTraveller from "@/components/effects/RoadTraveller";
+import roadStyles from "@/components/effects/ProjectRoad.module.css";
 import ProjectCard from "@/components/ui/ProjectCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { currentWork, projects } from "@/data/portfolio";
@@ -11,10 +13,26 @@ export default function ProjectsSection() {
     >
       <SectionHeading id="projects-heading" title="Projects" />
 
-      <div className="space-y-8">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+      <div className={roadStyles.road} data-project-road>
+        <RoadTraveller />
+
+        <ol className={roadStyles.roadList}>
+          {projects.map((project) => (
+            <li key={project.id} className={roadStyles.checkpoint}>
+              <div className={roadStyles.card}>
+                <ProjectCard project={project} />
+              </div>
+
+              <span
+                className={roadStyles.marker}
+                data-road-checkpoint={project.checkpoint}
+                aria-hidden="true"
+              >
+                {String(project.checkpoint).padStart(2, "0")}
+              </span>
+            </li>
+          ))}
+        </ol>
       </div>
 
       <div

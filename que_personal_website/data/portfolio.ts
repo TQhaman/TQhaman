@@ -36,7 +36,7 @@ export const aboutProfile = {
     "ASP.NET",
     "SQL Server",
     "Python",
-    "API Intergration",
+    "API Integration",
     "Git",
     "Software Testing",
   ],
@@ -203,7 +203,7 @@ export const experience: Experience[] = [
       "Supporting students with database concepts, revision activities and academic problem solving.",
     outcome:
       "Strengthened my ability to explain technical concepts clearly and guide students through difficult material.",
-    status: "In progress",
+    status: "Completed",
   },
   {
     title: "UCT Cortex Hub Fintech Lab Winter School",

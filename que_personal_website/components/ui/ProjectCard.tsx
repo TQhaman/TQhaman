@@ -29,15 +29,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <h3 className="mt-1 text-2xl text-paper">{project.title}</h3>
       </header>
 
-      <div className="grid lg:grid-cols-[minmax(18rem,0.8fr)_minmax(0,1.2fr)]">
-        <div className="border-b border-muted/25 bg-ink lg:border-r lg:border-b-0">
+      <div>
+        <div className="border-b border-muted/25 bg-ink">
           {project.mediaUrl ? (
             <div className="relative aspect-video overflow-hidden">
               <Image
                 src={project.mediaUrl}
                 alt={project.altText}
                 fill
-                sizes="(min-width: 1024px) 28rem, calc(100vw - 2rem)"
+                sizes="(min-width: 1024px) 30rem, calc(100vw - 5rem)"
                 className="object-cover"
               />
             </div>
