@@ -2,10 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
-import PixelAvatar from "./PixelAvatar";
 import styles from "./ProjectRoad.module.css";
+import RoadWalker from "./RoadWalker";
 
 const ROAD_EDGE_INSET_PX = 20;
+const WALK_IDLE_DELAY_MS = 180;
+const WALK_MOVEMENT_THRESHOLD_PX = 0.5;
 const CHECKPOINT_ACCENTS = [
   "var(--green)",
   "var(--cyan)",
@@ -36,8 +38,50 @@ export default function RoadTraveller() {
     );
 
     let animationFrameId: number | null = null;
+    let walkingTimeoutId: number | null = null;
     let activeCheckpointIndex = -1;
     let listenersAreActive = false;
+    let previousTravelY: number | null = null;
+
+    const clearWalkingTimeout = () => {
+      if (walkingTimeoutId === null) {
+        return;
+      }
+
+      window.clearTimeout(walkingTimeoutId);
+      walkingTimeoutId = null;
+    };
+
+    const stopWalking = () => {
+      clearWalkingTimeout();
+      traveller.dataset.walking = "false";
+    };
+
+    const scheduleWalkingStop = () => {
+      clearWalkingTimeout();
+      walkingTimeoutId = window.setTimeout(() => {
+        traveller.dataset.walking = "false";
+        walkingTimeoutId = null;
+      }, WALK_IDLE_DELAY_MS);
+    };
+
+    const updateWalkingState = (travelY: number) => {
+      if (previousTravelY === null) {
+        previousTravelY = travelY;
+        return;
+      }
+
+      const movement = travelY - previousTravelY;
+      previousTravelY = travelY;
+
+      if (Math.abs(movement) <= WALK_MOVEMENT_THRESHOLD_PX) {
+        return;
+      }
+
+      traveller.dataset.direction = movement > 0 ? "forward" : "reverse";
+      traveller.dataset.walking = "true";
+      scheduleWalkingStop();
+    };
 
     const setCheckpointAccent = (checkpointIndex: number) => {
       if (checkpointIndex === activeCheckpointIndex) {
@@ -57,6 +101,9 @@ export default function RoadTraveller() {
         "--travel-y",
         `${ROAD_EDGE_INSET_PX}px`,
       );
+      previousTravelY = ROAD_EDGE_INSET_PX;
+      traveller.dataset.direction = "forward";
+      stopWalking();
       setCheckpointAccent(0);
     };
 
@@ -79,6 +126,7 @@ export default function RoadTraveller() {
       const travelY = travelStart + progress * (travelEnd - travelStart);
 
       traveller.style.setProperty("--travel-y", `${travelY}px`);
+      updateWalkingState(travelY);
 
       if (checkpoints.length === 0) {
         return;
@@ -162,13 +210,19 @@ export default function RoadTraveller() {
       motionPreference.removeEventListener("change", applyMotionPreference);
       removeMovementListeners();
       cancelScheduledUpdate();
+      clearWalkingTimeout();
     };
   }, []);
 
   return (
-    <div ref={travellerRef} className={styles.traveller} aria-hidden="true">
-      <span className={styles.startLabel}>Start</span>
-      <PixelAvatar />
+    <div
+      ref={travellerRef}
+      className={styles.traveller}
+      data-direction="forward"
+      data-walking="false"
+      aria-hidden="true"
+    >
+      <RoadWalker />
     </div>
   );
 }

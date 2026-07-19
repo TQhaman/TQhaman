@@ -1,0 +1,291 @@
+.walker {
+  --pixel: var(--walker-pixel, 2px);
+  --skin: color-mix(in srgb, var(--amber) 70%, var(--ink-soft));
+  --skin-light: color-mix(in srgb, var(--skin) 82%, var(--paper));
+  --skin-shadow: color-mix(in srgb, var(--skin) 72%, var(--ink));
+  --hair: color-mix(in srgb, var(--ink) 86%, var(--muted));
+  --shirt-shadow: color-mix(in srgb, var(--cyan) 55%, var(--ink));
+  --trousers: color-mix(in srgb, var(--muted) 42%, var(--ink));
+
+  position: relative;
+  width: calc(var(--pixel) * 16);
+  height: calc(var(--pixel) * 27);
+  image-rendering: pixelated;
+}
+
+.walker span {
+  position: absolute;
+  display: block;
+}
+
+.shadow {
+  z-index: 0;
+  bottom: 0;
+  left: calc(var(--pixel) * 3);
+  width: calc(var(--pixel) * 10);
+  height: calc(var(--pixel) * 2);
+  background: color-mix(in srgb, var(--ink) 82%, transparent);
+  box-shadow: var(--pixel) var(--pixel) 0
+    color-mix(in srgb, var(--ink) 55%, transparent);
+}
+
+.body {
+  z-index: 1;
+  inset: 0 0 auto;
+  width: calc(var(--pixel) * 16);
+  height: calc(var(--pixel) * 25);
+  transform-origin: center bottom;
+}
+
+.hairBack {
+  z-index: 3;
+  top: calc(var(--pixel) * 2);
+  left: calc(var(--pixel) * 5);
+  width: calc(var(--pixel) * 7);
+  height: calc(var(--pixel) * 8);
+  background: var(--hair);
+}
+
+.face {
+  z-index: 4;
+  top: calc(var(--pixel) * 4);
+  left: calc(var(--pixel) * 5);
+  width: calc(var(--pixel) * 7);
+  height: calc(var(--pixel) * 7);
+  background: var(--skin);
+  box-shadow: inset calc(var(--pixel) * -1) 0 0 var(--skin-shadow);
+}
+
+.hairTop {
+  z-index: 5;
+  top: var(--pixel);
+  left: calc(var(--pixel) * 5);
+  width: calc(var(--pixel) * 7);
+  height: calc(var(--pixel) * 4);
+  background: var(--hair);
+  box-shadow:
+    calc(var(--pixel) * -1) calc(var(--pixel) * 2) 0 var(--hair),
+    var(--pixel) calc(var(--pixel) * -1) 0 var(--hair);
+}
+
+.earLeft,
+.earRight {
+  z-index: 4;
+  top: calc(var(--pixel) * 6);
+  width: var(--pixel);
+  height: calc(var(--pixel) * 3);
+  background: var(--skin-shadow);
+}
+
+.earLeft {
+  left: calc(var(--pixel) * 4);
+}
+
+.earRight {
+  right: calc(var(--pixel) * 3);
+}
+
+.eyeLeft,
+.eyeRight {
+  z-index: 5;
+  top: calc(var(--pixel) * 7);
+  width: var(--pixel);
+  height: var(--pixel);
+  background: var(--skin-light);
+  box-shadow: inset 0 calc(var(--pixel) / 2) 0 var(--ink);
+}
+
+.eyeLeft {
+  left: calc(var(--pixel) * 7);
+}
+
+.eyeRight {
+  right: calc(var(--pixel) * 6);
+}
+
+.neck {
+  z-index: 2;
+  top: calc(var(--pixel) * 10);
+  left: calc(var(--pixel) * 7);
+  width: calc(var(--pixel) * 3);
+  height: calc(var(--pixel) * 3);
+  background: var(--skin-shadow);
+  box-shadow: inset var(--pixel) 0 0 var(--skin);
+}
+
+.torso {
+  z-index: 3;
+  top: calc(var(--pixel) * 12);
+  left: calc(var(--pixel) * 5);
+  width: calc(var(--pixel) * 7);
+  height: calc(var(--pixel) * 7);
+  background: var(--cyan);
+  box-shadow:
+    inset calc(var(--pixel) * -2) 0 0 var(--shirt-shadow),
+    0 var(--pixel) 0 var(--ink-soft);
+}
+
+.accent {
+  z-index: 4;
+  top: calc(var(--pixel) * 14);
+  right: calc(var(--pixel) * 5);
+  width: calc(var(--pixel) * 2);
+  height: calc(var(--pixel) * 2);
+  background: var(--avatar-accent, var(--green));
+}
+
+.armLeft,
+.armRight {
+  z-index: 2;
+  top: calc(var(--pixel) * 13);
+  width: calc(var(--pixel) * 2);
+  height: calc(var(--pixel) * 8);
+  border-top: calc(var(--pixel) * 4) solid var(--shirt-shadow);
+  background: var(--skin);
+  transform-origin: center top;
+}
+
+.armLeft {
+  left: calc(var(--pixel) * 3);
+}
+
+.armRight {
+  right: calc(var(--pixel) * 2);
+  background: var(--skin-shadow);
+}
+
+.legLeft,
+.legRight {
+  z-index: 1;
+  top: calc(var(--pixel) * 18);
+  width: calc(var(--pixel) * 3);
+  height: calc(var(--pixel) * 6);
+  background: var(--trousers);
+  transform-origin: center top;
+}
+
+.legLeft::after,
+.legRight::after {
+  position: absolute;
+  bottom: calc(var(--pixel) * -1);
+  width: calc(var(--pixel) * 4);
+  height: calc(var(--pixel) * 2);
+  background: var(--ink);
+  content: "";
+}
+
+.legLeft {
+  left: calc(var(--pixel) * 5);
+}
+
+.legLeft::after {
+  left: calc(var(--pixel) * -1);
+}
+
+.legRight {
+  right: calc(var(--pixel) * 4);
+  background: color-mix(in srgb, var(--trousers) 72%, var(--ink));
+}
+
+.legRight::after {
+  right: calc(var(--pixel) * -1);
+}
+
+:global([data-walking="true"]) .body {
+  animation: body-step 320ms steps(1, end) infinite;
+}
+
+:global([data-walking="true"]) .armLeft {
+  animation: arm-left-step 320ms steps(1, end) infinite;
+}
+
+:global([data-walking="true"]) .armRight {
+  animation: arm-right-step 320ms steps(1, end) infinite;
+}
+
+:global([data-walking="true"]) .legLeft {
+  animation: leg-left-step 320ms steps(1, end) infinite;
+}
+
+:global([data-walking="true"]) .legRight {
+  animation: leg-right-step 320ms steps(1, end) infinite;
+}
+
+:global([data-direction="reverse"][data-walking="true"]) .body,
+:global([data-direction="reverse"][data-walking="true"]) .armLeft,
+:global([data-direction="reverse"][data-walking="true"]) .armRight,
+:global([data-direction="reverse"][data-walking="true"]) .legLeft,
+:global([data-direction="reverse"][data-walking="true"]) .legRight {
+  animation-direction: reverse;
+}
+
+@keyframes body-step {
+  0%,
+  49% {
+    transform: translateY(0);
+  }
+
+  50%,
+  100% {
+    transform: translateY(var(--pixel));
+  }
+}
+
+@keyframes arm-left-step {
+  0%,
+  49% {
+    transform: translateY(0);
+  }
+
+  50%,
+  100% {
+    transform: translateY(var(--pixel));
+  }
+}
+
+@keyframes arm-right-step {
+  0%,
+  49% {
+    transform: translateY(var(--pixel));
+  }
+
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes leg-left-step {
+  0%,
+  49% {
+    transform: translateX(calc(var(--pixel) * -1));
+  }
+
+  50%,
+  100% {
+    transform: translate(var(--pixel), var(--pixel));
+  }
+}
+
+@keyframes leg-right-step {
+  0%,
+  49% {
+    transform: translate(var(--pixel), var(--pixel));
+  }
+
+  50%,
+  100% {
+    transform: translateX(calc(var(--pixel) * -1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .body,
+  .armLeft,
+  .armRight,
+  .legLeft,
+  .legRight {
+    animation: none !important;
+    transform: none !important;
+  }
+}

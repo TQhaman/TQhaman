@@ -42,6 +42,15 @@ export const aboutProfile = {
   ],
 } as const;
 
+export const contactProfile = {
+  status: "Channels online",
+  command: "contact --open",
+  heading: "Open a communication channel.",
+  description:
+    "For opportunities, collaborations or questions about my work, use one of the channels below.",
+  cvUrl: "/cv/qhamani-twaku-cv.pdf",
+} as const;
+
 export const projects: Project[] = [
   {
     id: "agrilink",

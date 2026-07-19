@@ -24,10 +24,40 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteTitle = "Qhamani Twaku | Information Systems Student";
+const siteDescription =
+  "Portfolio of Qhamani Twaku, a final-year BCom Information Systems student building practical software, FinTech and digital business solutions.";
+
 export const metadata: Metadata = {
-  title: "Qhamani Twaku | Information Systems Student",
-  description:
-    "Qhamani Twaku's portfolio of software projects, skills, experience and current work.",
+  title: {
+    default: siteTitle,
+    template: "%s | Qhamani Twaku",
+  },
+  description: siteDescription,
+  applicationName: "Qhamani Twaku Portfolio",
+  authors: [{ name: "Qhamani Twaku" }],
+  creator: "Qhamani Twaku",
+  keywords: [
+    "Qhamani Twaku",
+    "Information Systems",
+    "Software Development",
+    "Full-Stack Development",
+    "FinTech",
+    "South Africa",
+  ],
+  category: "technology",
+  openGraph: {
+    type: "website",
+    locale: "en_ZA",
+    title: siteTitle,
+    description: siteDescription,
+    siteName: "Qhamani Twaku Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({

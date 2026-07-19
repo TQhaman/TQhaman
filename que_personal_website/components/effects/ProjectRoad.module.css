@@ -78,37 +78,26 @@
 }
 
 .traveller {
-  --avatar-pixel: 2px;
   --avatar-accent: var(--green);
   --travel-y: 20px;
+  --walker-pixel: 2px;
 
   position: absolute;
   z-index: 4;
   top: 0;
   left: var(--road-center);
-  display: grid;
-  gap: 0.5rem;
-  justify-items: center;
   transform: translate3d(-50%, var(--travel-y), 0);
   will-change: transform;
-}
-
-.startLabel {
-  border: 2px solid var(--green);
-  background: var(--ink);
-  padding: 0.2rem 0.35rem;
-  color: var(--green);
-  font-family: var(--font-pixelify), var(--font-geist-mono), monospace;
-  font-size: 0.625rem;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
 }
 
 @media (min-width: 64rem) {
   .road {
     --road-center: 50%;
     --road-width: 5rem;
+  }
+
+  .traveller {
+    --walker-pixel: 3px;
   }
 
   .roadList {

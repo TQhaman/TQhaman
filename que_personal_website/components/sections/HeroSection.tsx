@@ -41,13 +41,13 @@ export default function HeroSection() {
             View Projects
           </a>
 
-          <span
+          <a
+            href="/cv/qhamani-twaku-cv.pdf"
+            download
             className="button-secondary"
-            aria-disabled="true"
-            title="The CV file has not been added yet"
           >
-            CV coming soon
-          </span>
+            Download CV
+          </a>
         </div>
       </div>
 
