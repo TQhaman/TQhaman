@@ -1,36 +1,71 @@
+import ProjectCard from "@/components/ui/ProjectCard";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { projects } from "@/data/portfolio";
+import { currentWork, projects } from "@/data/portfolio";
 
 export default function ProjectsSection() {
   return (
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="space-y-6 py-10"
+      className="space-y-10 py-14"
     >
       <SectionHeading id="projects-heading" title="Projects" />
 
-      {projects.map((project) => (
-        <article key={project.id} className="space-y-3">
-          <h3>{project.title}</h3>
+      <div className="space-y-8">
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
 
-          <p>{project.overview}</p>
+      <div
+        className="border-y border-muted/30 bg-ink-soft/70 py-7"
+        aria-labelledby="current-work-heading"
+      >
+        <div className="flex flex-wrap items-end justify-between gap-3 px-5 md:px-6">
+          <div>
+            <p className="font-pixel text-sm text-green uppercase">
+              Active quest log
+            </p>
+            <h3 id="current-work-heading" className="mt-1 text-2xl text-paper">
+              Current work
+            </h3>
+          </div>
 
-          <p>
-            <strong className="font-pixel">Problem:</strong> {project.problem}
-          </p>
+          <span className="font-mono text-xs text-amber uppercase">
+            Work in progress
+          </span>
+        </div>
 
-          <p>
-            <strong className="font-pixel">My contribution:</strong>{" "}
-            {project.contribution}
-          </p>
+        <div className="mt-5 divide-y divide-muted/25 border-t border-muted/25">
+          {currentWork.map((work) => (
+            <article
+              key={work.title}
+              className="grid gap-4 px-5 py-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:px-6"
+            >
+              <div className="min-w-0 space-y-1">
+                <h4 className="font-pixel text-lg text-cyan">{work.title}</h4>
+                <p className="text-sm text-paper/85">{work.description}</p>
+              </div>
 
-          <p>
-            <strong className="font-pixel">Technologies:</strong>{" "}
-            {project.technologies.join(", ")}
-          </p>
-        </article>
-      ))}
+              <div className="flex flex-wrap items-center gap-3 md:justify-end">
+                <span className="font-mono text-xs text-green uppercase">
+                  {work.status}
+                </span>
+
+                {work.externalUrl ? (
+                  <a href={work.externalUrl} className="button-secondary">
+                    View current work
+                  </a>
+                ) : (
+                  <span className="font-mono text-xs text-muted">
+                    External link pending
+                  </span>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

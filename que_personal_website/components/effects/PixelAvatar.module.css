@@ -1,0 +1,177 @@
+.avatar {
+  --pixel: var(--avatar-pixel, 4px);
+  --skin: color-mix(in srgb, var(--amber) 70%, var(--ink-soft));
+  --skin-light: color-mix(in srgb, var(--skin) 82%, var(--paper));
+  --skin-shadow: color-mix(in srgb, var(--skin) 72%, var(--ink));
+  --hair: color-mix(in srgb, var(--ink) 86%, var(--muted));
+  --shirt-shadow: color-mix(in srgb, var(--cyan) 55%, var(--ink));
+
+  position: relative;
+  width: calc(var(--pixel) * 20);
+  height: calc(var(--pixel) * 24);
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: var(--ink-soft);
+  box-shadow:
+    0 0 0 var(--pixel) var(--muted),
+    calc(var(--pixel) * 2) calc(var(--pixel) * 2) 0 var(--ink);
+  image-rendering: pixelated;
+}
+
+.avatar span {
+  position: absolute;
+  display: block;
+}
+
+.hairBack {
+  top: calc(var(--pixel) * 3);
+  left: calc(var(--pixel) * 5);
+  width: calc(var(--pixel) * 10);
+  height: calc(var(--pixel) * 8);
+  background: var(--hair);
+}
+
+.face {
+  top: calc(var(--pixel) * 5);
+  left: calc(var(--pixel) * 6);
+  width: calc(var(--pixel) * 8);
+  height: calc(var(--pixel) * 9);
+  background: var(--skin);
+  box-shadow: inset calc(var(--pixel) * -1) 0 0 var(--skin-shadow);
+}
+
+.earLeft,
+.earRight {
+  top: calc(var(--pixel) * 8);
+  width: var(--pixel);
+  height: calc(var(--pixel) * 4);
+  background: var(--skin-shadow);
+}
+
+.earLeft {
+  left: calc(var(--pixel) * 5);
+}
+
+.earRight {
+  right: calc(var(--pixel) * 5);
+}
+
+.hairTop {
+  top: calc(var(--pixel) * 2);
+  left: calc(var(--pixel) * 6);
+  width: calc(var(--pixel) * 9);
+  height: calc(var(--pixel) * 3);
+  background: var(--hair);
+  box-shadow:
+    calc(var(--pixel) * -1) var(--pixel) 0 var(--hair),
+    calc(var(--pixel) * 2) var(--pixel) 0 var(--hair);
+}
+
+.hairLine {
+  top: calc(var(--pixel) * 5);
+  left: calc(var(--pixel) * 6);
+  width: calc(var(--pixel) * 8);
+  height: var(--pixel);
+  background: var(--hair);
+}
+
+.browLeft,
+.browRight {
+  top: calc(var(--pixel) * 7);
+  width: calc(var(--pixel) * 2);
+  height: var(--pixel);
+  background: var(--hair);
+}
+
+.browLeft,
+.eyeLeft {
+  left: calc(var(--pixel) * 7);
+}
+
+.browRight,
+.eyeRight {
+  right: calc(var(--pixel) * 7);
+}
+
+.eyeLeft,
+.eyeRight {
+  top: calc(var(--pixel) * 9);
+  width: var(--pixel);
+  height: var(--pixel);
+  background: var(--paper);
+  box-shadow: inset 0 calc(var(--pixel) / 2) 0 var(--ink);
+}
+
+.nose {
+  top: calc(var(--pixel) * 9);
+  left: calc(var(--pixel) * 10);
+  width: var(--pixel);
+  height: calc(var(--pixel) * 2);
+  background: var(--skin-light);
+}
+
+.mouth {
+  top: calc(var(--pixel) * 12);
+  left: calc(var(--pixel) * 9);
+  width: calc(var(--pixel) * 3);
+  height: var(--pixel);
+  background: var(--skin-shadow);
+}
+
+.neck {
+  top: calc(var(--pixel) * 14);
+  left: calc(var(--pixel) * 8);
+  width: calc(var(--pixel) * 4);
+  height: calc(var(--pixel) * 4);
+  background: var(--skin-shadow);
+  box-shadow: inset var(--pixel) 0 0 var(--skin);
+}
+
+.shoulderLeft,
+.shoulderRight {
+  top: calc(var(--pixel) * 19);
+  width: calc(var(--pixel) * 3);
+  height: calc(var(--pixel) * 4);
+  background: var(--shirt-shadow);
+}
+
+.shoulderLeft {
+  left: calc(var(--pixel) * 2);
+}
+
+.shoulderRight {
+  right: calc(var(--pixel) * 2);
+}
+
+.shirt {
+  top: calc(var(--pixel) * 17);
+  left: calc(var(--pixel) * 5);
+  width: calc(var(--pixel) * 10);
+  height: calc(var(--pixel) * 6);
+  background: var(--cyan);
+  box-shadow: inset calc(var(--pixel) * -2) 0 0 var(--shirt-shadow);
+}
+
+.collar {
+  top: calc(var(--pixel) * 17);
+  left: calc(var(--pixel) * 8);
+  width: calc(var(--pixel) * 4);
+  height: calc(var(--pixel) * 2);
+  background: var(--ink-soft);
+}
+
+.accent {
+  top: calc(var(--pixel) * 19);
+  right: calc(var(--pixel) * 6);
+  width: calc(var(--pixel) * 2);
+  height: calc(var(--pixel) * 2);
+  background: var(--green);
+}
+
+.base {
+  bottom: 0;
+  left: calc(var(--pixel) * 3);
+  width: calc(var(--pixel) * 14);
+  height: var(--pixel);
+  background: var(--muted);
+}

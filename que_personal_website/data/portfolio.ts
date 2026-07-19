@@ -6,6 +6,42 @@ import type {
   SocialLink,
 } from "@/types/portfolio";
 
+export const aboutProfile = {
+  name: "Qhamani Twaku",
+  playerLabel: "Player 01",
+  heading: "Building practical systems for real-world needs.",
+  photo: {
+    src: "/images/profile/qhamani-twaku-portrait.jpeg",
+    alt: "Portrait of Qhamani Twaku standing in a furniture showroom.",
+  },
+  paragraphs: [
+    "I am a final-year BCom Information Systems student at the University of Fort Hare. My studies combine business understanding with software development, databases, project management and emerging technologies.",
+    "I am moving toward software development and digital product roles where I can build practical systems that solve business and community problems. I am especially interested in full-stack development, financial technology and business information systems.",
+    "I am currently building this portfolio and developing QWS Digital, a web design business aimed at helping small businesses establish a stronger online presence. Alongside that work, I am strengthening my technical skills while tutoring, debate and rowing continue to develop my communication, discipline and collaborative problem-solving.",
+  ],
+  facts: [
+    { label: "Base", value: "East London, South Africa" },
+    { label: "Education", value: "Final-year BCom Information Systems" },
+    { label: "University", value: "University of Fort Hare" },
+    {
+      label: "Interests",
+      value: "Software Dev, FinTech and digital entrepreneurship",
+    },
+    { label: "Beyond code", value: "Tutoring, debate and rowing" },
+  ],
+  learning: [
+    "TypeScript",
+    "Next.js",
+    "C#",
+    "ASP.NET",
+    "SQL Server",
+    "Python",
+    "API Intergration",
+    "Git",
+    "Software Testing",
+  ],
+} as const;
+
 export const projects: Project[] = [
   {
     id: "agrilink",
