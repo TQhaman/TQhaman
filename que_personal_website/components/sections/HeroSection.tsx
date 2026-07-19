@@ -1,4 +1,5 @@
-import OrigelTerminal from "@/components/effects/OrigelTerminal";
+import Origel from "@/components/effects/Origel";
+import RotatingRoles from "@/components/effects/RotatingRoles";
 
 export default function HeroSection() {
   return (
@@ -23,7 +24,16 @@ export default function HeroSection() {
         </p>
 
         <p className="font-pixel text-2xl text-paper">
-          I am a <span className="text-cyan">Student</span>
+          <span className="sr-only">
+            I am an Information Systems Student
+          </span>
+          <span
+            aria-hidden="true"
+            className="inline-flex flex-wrap items-baseline gap-x-2"
+          >
+            <span>I am</span>
+            <RotatingRoles />
+          </span>
         </p>
 
         <div className="flex flex-wrap gap-3">
@@ -41,7 +51,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <OrigelTerminal />
+      <Origel />
     </section>
   );
 }

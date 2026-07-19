@@ -179,10 +179,15 @@
   pointer-events: none;
 }
 
-.terminalOutput {
+.terminalStage {
+  position: relative;
+  min-height: inherit;
+}
+
+.terminalOutput,
+.bootOutput {
   position: relative;
   z-index: 1;
-  display: grid;
   gap: 0.45rem;
   padding: 0.75rem 0.8rem;
   color: var(--paper);
@@ -192,9 +197,40 @@
   text-shadow: 0 0 0.3rem color-mix(in srgb, var(--green) 25%, transparent);
 }
 
-.terminalOutput p {
+.terminalOutput {
+  display: none;
+}
+
+.bootOutput {
+  display: grid;
+  align-content: start;
+}
+
+.terminalStage[data-booted="true"] .bootOutput {
+  display: none;
+}
+
+.terminalStage[data-booted="true"] .terminalOutput {
+  display: grid;
+}
+
+.terminalOutput p,
+.bootOutput p {
   max-width: none;
   margin: 0;
+}
+
+.bootLine,
+.bootReady {
+  padding-left: 2.05ch;
+}
+
+.bootLine {
+  color: var(--paper);
+}
+
+.bootReady {
+  color: var(--green);
 }
 
 .bashIdentity {
@@ -420,7 +456,8 @@
     min-height: 12rem;
   }
 
-  .terminalOutput {
+  .terminalOutput,
+  .bootOutput {
     gap: 0.32rem;
     padding: 0.6rem 0.55rem;
     font-size: 0.6rem;
@@ -444,5 +481,15 @@
   .smallDial {
     width: 1.4rem;
     height: 1.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminalStage .bootOutput {
+    display: none;
+  }
+
+  .terminalStage .terminalOutput {
+    display: grid;
   }
 }
