@@ -27,8 +27,14 @@ const geistMono = Geist_Mono({
 const siteTitle = "Qhamani Twaku | Information Systems Student";
 const siteDescription =
   "Portfolio of Qhamani Twaku, a final-year BCom Information Systems student building practical software, FinTech and digital business solutions.";
+const metadataBase = new URL(
+  process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000",
+);
 
 export const metadata: Metadata = {
+  metadataBase,
   title: {
     default: siteTitle,
     template: "%s | Qhamani Twaku",

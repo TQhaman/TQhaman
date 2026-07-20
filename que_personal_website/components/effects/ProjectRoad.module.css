@@ -87,6 +87,7 @@
   top: 0;
   left: var(--road-center);
   transform: translate3d(-50%, var(--travel-y), 0);
+  transition: transform 80ms linear;
   will-change: transform;
 }
 

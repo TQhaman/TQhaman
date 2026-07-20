@@ -191,91 +191,29 @@
   right: calc(var(--pixel) * -1);
 }
 
-:global([data-walking="true"]) .body {
-  animation: body-step 320ms steps(1, end) infinite;
-}
-
-:global([data-walking="true"]) .armLeft {
-  animation: arm-left-step 320ms steps(1, end) infinite;
-}
-
-:global([data-walking="true"]) .armRight {
-  animation: arm-right-step 320ms steps(1, end) infinite;
-}
-
 :global([data-walking="true"]) .legLeft {
-  animation: leg-left-step 320ms steps(1, end) infinite;
+  animation: run-leg 350ms steps(2, end) infinite;
 }
 
 :global([data-walking="true"]) .legRight {
-  animation: leg-right-step 320ms steps(1, end) infinite;
+  animation: run-leg 350ms steps(2, end) infinite reverse;
 }
 
-:global([data-direction="reverse"][data-walking="true"]) .body,
-:global([data-direction="reverse"][data-walking="true"]) .armLeft,
-:global([data-direction="reverse"][data-walking="true"]) .armRight,
-:global([data-direction="reverse"][data-walking="true"]) .legLeft,
-:global([data-direction="reverse"][data-walking="true"]) .legRight {
+:global([data-direction="reverse"][data-walking="true"]) .legLeft {
   animation-direction: reverse;
 }
 
-@keyframes body-step {
-  0%,
-  49% {
+:global([data-direction="reverse"][data-walking="true"]) .legRight {
+  animation-direction: normal;
+}
+
+@keyframes run-leg {
+  from {
     transform: translateY(0);
   }
 
-  50%,
-  100% {
-    transform: translateY(var(--pixel));
-  }
-}
-
-@keyframes arm-left-step {
-  0%,
-  49% {
-    transform: translateY(0);
-  }
-
-  50%,
-  100% {
-    transform: translateY(var(--pixel));
-  }
-}
-
-@keyframes arm-right-step {
-  0%,
-  49% {
-    transform: translateY(var(--pixel));
-  }
-
-  50%,
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes leg-left-step {
-  0%,
-  49% {
-    transform: translateX(calc(var(--pixel) * -1));
-  }
-
-  50%,
-  100% {
-    transform: translate(var(--pixel), var(--pixel));
-  }
-}
-
-@keyframes leg-right-step {
-  0%,
-  49% {
-    transform: translate(var(--pixel), var(--pixel));
-  }
-
-  50%,
-  100% {
-    transform: translateX(calc(var(--pixel) * -1));
+  to {
+    transform: translateY(calc(var(--pixel) * -1));
   }
 }
 

@@ -25,7 +25,7 @@ export const aboutProfile = {
     { label: "University", value: "University of Fort Hare" },
     {
       label: "Interests",
-      value: "Software Dev, FinTech and digital entrepreneurship",
+      value: "Databases, FinTech and digital entrepreneurship",
     },
     { label: "Beyond code", value: "Tutoring, debate and rowing" },
   ],
@@ -197,7 +197,7 @@ export const experience: Experience[] = [
   {
     title: "BCom Information Systems",
     organisation: "University of Fort Hare",
-    dateRange: "2023 – Present",
+    dateRange: "2023 - Present",
     summary:
       "Studying information systems, software development, databases, project management and emerging technologies.",
     outcome:
@@ -215,7 +215,7 @@ export const experience: Experience[] = [
     status: "Completed",
   },
   {
-    title: "UCT Cortex Hub Fintech Lab Winter School",
+    title: "UCT-Cortex Hub FinTech Lab Winter School",
     organisation: "UCT Financial Innovation Hub and Cortex Hub",
     dateRange: "June - July 2026",
     summary:

@@ -125,7 +125,7 @@ export default function RoadTraveller() {
       );
       const travelY = travelStart + progress * (travelEnd - travelStart);
 
-      traveller.style.setProperty("--travel-y", `${travelY}px`);
+      traveller.style.setProperty("--travel-y", `${Math.round(travelY)}px`);
       updateWalkingState(travelY);
 
       if (checkpoints.length === 0) {

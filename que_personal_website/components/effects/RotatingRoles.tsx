@@ -6,7 +6,7 @@ const roles = [
   { article: "an", label: "Information Systems Student" },
   { article: "a", label: "Software Developer" },
   { article: "a", label: "Database Tutor" },
-  { article: "a", label: "Systems Problem Solver" },
+  { article: "a", label: "Systems Architect" },
   { article: "a", label: "FinTech Enthusiast" },
   { article: "a", label: "Digital Entrepreneur" },
 ] as const;

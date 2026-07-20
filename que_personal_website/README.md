@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Qhamani Twaku Portfolio
 
-## Getting Started
+A single-page portfolio built with Next.js, TypeScript and Tailwind CSS. The
+interface combines a readable professional profile with a dark pixel-art theme,
+an Origel terminal, rotating roles and a scroll-linked project-road traveller.
 
-First, run the development server:
+## Requirements
+
+- Node.js 20.9 or newer
+- npm
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npx tsc --noEmit --incremental false
+npm run build
+npm run start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/` contains the App Router page, global design system and metadata.
+- `components/` contains layout, section, effect and reusable UI components.
+- `data/portfolio.ts` is the source of portfolio content.
+- `types/portfolio.ts` defines the content contracts.
+- `public/` contains the CV and approved image assets.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The static sections remain Server Components. Client Components are limited to
+the rotating role, terminal boot sequence and scroll-linked road traveller.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project is compatible with a standard Next.js deployment on Vercel. Social
+metadata uses `VERCEL_PROJECT_PRODUCTION_URL` when Vercel provides it and falls
+back to `http://localhost:3000` during local development.
